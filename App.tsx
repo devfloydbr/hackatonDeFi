@@ -1,21 +1,33 @@
+import 'react-native-gesture-handler'
+import './global'
+import 'intl'
+import 'intl/locale-data/jsonp/pt-BR'
+
+import React from 'react'
+
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold
+} from '@expo-google-fonts/roboto'
+import AppLoading from 'expo-app-loading'
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { ThemeProvider } from 'styled-components';
+import { StyleSheet } from 'react-native'
+import theme from './src/global/styles/theme'
+
+import { AuthProvider } from './src/hooks/auth';
+import { Routes } from './src/routes'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <ThemeProvider theme={theme}>
+      <StatusBar style="light" />    
+      <AuthProvider>          
+        <Routes /> 
+      </AuthProvider>    
+    </ThemeProvider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
