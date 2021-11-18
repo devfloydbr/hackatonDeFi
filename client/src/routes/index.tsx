@@ -1,11 +1,10 @@
 import React from 'react'
 
+import { Login } from '../screens/Login'
+import { NewWallet } from '../screens/NewWallet'
+
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-
-import { Platform } from 'react-native'
-import { useTheme } from 'styled-components'
-import { Login } from '../screens/Login'
 const { Navigator: NavigatorStack, Screen: ScreenStack } = createStackNavigator();
 
 export function Routes() {
@@ -18,6 +17,7 @@ export function Routes() {
         }}
       >
         <ScreenStack name="Login" component={Login} />  
+        <ScreenStack name="NewWallet" component={NewWallet} />  
       </NavigatorStack>
     </NavigationContainer>    
   )

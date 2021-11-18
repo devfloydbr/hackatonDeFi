@@ -5,6 +5,10 @@ import { Button } from '../../components/Button'
 import { useAuth } from '../../hooks/auth'
 
 import {
+  NavigationProp
+} from '@react-navigation/native';
+
+import {
   View,
   Title,
   Subtitle,
@@ -15,7 +19,11 @@ import {
   BackgroundLogin
 } from './styles'
 
-export function Login() { 
+interface Props {
+  navigation: NavigationProp<any, any>
+}
+
+export function Login({ navigation }: Props) { 
   const { connect } = useAuth()
 
   return (
@@ -39,7 +47,8 @@ export function Login() {
 
               <Button 
                 style={{ marginTop: 25 }}
-                title="Nova conta Valora"
+                title="Nova carteira"
+                onPress={() => navigation.navigate('NewWallet')}
               />
             </ButtonsContainer>
           </LoginContainer>
