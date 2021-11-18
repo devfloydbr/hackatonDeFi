@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 
-import { cryptumSDK } from './services/cryptum'
+import WalletController from './controllers/WalletController'
 
 const routes = express.Router();
 
@@ -8,12 +8,8 @@ routes.get('/', (req: Request, res: Response) => {
   return res.json({ api: 'API TRANSFER' });
 })
 
-routes.get('/teste', (req: Request, res: Response) => {
-  const walletController = cryptumSDK.getWalletController()
+routes.get('/mnemonic', WalletController.mnemonic)
 
-  const mnemonic = walletController.generateRandomMnemonic()
-
-  return res.json({ api: mnemonic });
-})
+routes.post('/wallet', WalletController.createWallet)
 
 export default routes;
