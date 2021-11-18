@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "hackatonDefi",
-    "slug": "hackatonDefi",
+    "name": "transfer",
+    "slug": "transfer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,7 +10,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "scheme": "celodappkit",  
     "updates": {
       "fallbackToCacheTimeout": 0
     },
