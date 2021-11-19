@@ -1,8 +1,11 @@
 {
+  "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "ts-node dist/server.js"
+    "start": "ts-node dist/server.js",
+    "deployContract": "node blockchain/handlers/deployContract.js"
   },
   "dependencies": {
     "cryptum-sdk": "^0.0.18",
