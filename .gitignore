@@ -14,4 +14,5 @@ client/web-build/
 client/.DS_Store
 
 api/node_modules/
+api/blockchain/cryptum-sdk/node_modules
 api/.env

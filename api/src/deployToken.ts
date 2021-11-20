@@ -1,4 +1,6 @@
-import CryptumSDK from '../../../blockchain/cryptum-sdk'
+import 'dotenv/config'
+import CryptumSDK from '../blockchain/cryptum-sdk/dist'
+
 
 async function deployToken() { 
   const cryptumSDK = new CryptumSDK({

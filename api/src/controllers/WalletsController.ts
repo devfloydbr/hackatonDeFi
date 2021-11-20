@@ -6,7 +6,7 @@ const walletController = cryptumSDK.getWalletController()
 
 export default { 
   async read(req: Request, res: Response) {
-    const { address, protocol } = req.params    
+    const { address, protocol } = req.params   
 
     const walletInfo = await walletController.getWalletInfo({
       address,
