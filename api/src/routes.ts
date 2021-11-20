@@ -1,15 +1,36 @@
-import express, { Request, Response } from 'express';
+import express from 'express'
 
-import WalletController from './controllers/WalletController'
+import WalletsController from './controllers/WalletsController'
+import NftsController from './controllers/NftsController'
+import ContractsController from './controllers/ContractsController'
 
-const routes = express.Router();
+const routes = express.Router()
 
-routes.get('/', (req: Request, res: Response) => {
-  return res.json({ api: 'API TRANSFER' });
+routes.get('/', (req, res) => {
+  return res.json({ api: 'API TRANSFER' })
 })
 
-routes.get('/mnemonic', WalletController.mnemonic)
+// WALLET
+routes.post('/wallet', WalletsController.create)
 
-routes.post('/wallet', WalletController.createWallet)
+routes.get('/wallet/:address/:protocol', WalletsController.read)
 
-export default routes;
+// NFT
+routes.post('/nft', NftsController.create)
+
+routes.post('/mint', NftsController.mint)
+
+routes.post('/safeTransfer', NftsController.safeTransfer)
+
+routes.get('/name/:protocol/:address/:contract', NftsController.name)
+
+routes.get('/symbol/:protocol/:address/:contract', NftsController.symbol)
+
+routes.get('/tokenURI/:protocol/:address/:contract/:tokenId', NftsController.tokenURI)
+
+// CONTRACT
+routes.get('/transfersByAddress/:address/:contract/:page/:offset', ContractsController.transfersByAddress)
+
+routes.get('/tokenBalance/:address/:contract', ContractsController.tokenBalance)
+
+export default routes

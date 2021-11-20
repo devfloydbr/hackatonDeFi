@@ -1,0 +1,12 @@
+export function getTokenAddress(protocol: any, tokenSymbol: any, testnet?: boolean): string;
+export function toSatoshi(btc: any): BigNumber;
+export function fromSatoshi(satoshi: any): BigNumber;
+export function toWei(eth: any): BigNumber;
+export function fromWei(wei: any): BigNumber;
+export function toStroop(xlm: any): BigNumber;
+export function fromStroop(stroop: any): BigNumber;
+export function toDrop(xrp: any): BigNumber;
+export function fromDrop(drop: any): BigNumber;
+export function toHTRUnit(v: any): BigNumber;
+export function fromHTRUnit(v: any): BigNumber;
+import { default as BigNumber } from "bignumber.js";
