@@ -21,6 +21,7 @@ export default {
     }
     
   },
+  
   async transfersByAddress(req: Request, res: Response) {
     const { address, contract, page, offset } = req.params
 

@@ -6,6 +6,7 @@ const requests = require('./requests.json');
 const { getBitcoinAddressFromPrivateKey, getBscAddressFromPrivateKey, getEthereumAddressFromPrivateKey, getCeloAddressFromPrivateKey, getStellarPublicKeyFromPrivateKey, getRippleAddressFromPrivateKey, getAvalancheAddressFromPrivateKey, deriveBitcoinWalletFromDerivationPath, deriveCeloWalletFromDerivationPath, deriveStellarWalletFromDerivationPath, deriveRippleWalletFromDerivationPath, deriveEthereumWalletFromDerivationPath, deriveBitcoinAddressFromXpub, deriveBscAddressFromXpub, deriveEthereumAddressFromXpub, deriveCeloAddressFromXpub, deriveHathorWalletFromDerivationPath, getHathorAddressFromPrivateKey, deriveHathorAddressFromXpub, deriveCardanoWalletFromDerivationPath, deriveCardanoAddressFromXpub, getCardanoAddressFromPrivateKey, deriveAvalancheWalletFromDerivationPath, deriveAvalancheAddressFromXpub, } = require('../../../services/wallet');
 const { Protocol } = require('../../../services/blockchain/constants');
 const { validateWalletInfo, validatePrivateKey, validateCardanoPrivateKey } = require('../../../services/validations');
+const InvalidException = require('../../../../errors/InvalidException');
 class Controller extends Interface {
     /**
      * Generate random words
@@ -29,8 +30,10 @@ class Controller extends Interface {
      * @returns {Promise<Wallet>}
      */
     async generateWallet({ protocol, mnemonic, testnet, derivation = { account: 0, change: 0 } }) {
-        validateMnemonic(mnemonic);
         mnemonic = mnemonic ? mnemonic : this.generateRandomMnemonic();
+        if (!validateMnemonic(mnemonic)) {
+            throw new InvalidException('Invalid mnemonic');
+        }
         testnet = testnet !== undefined ? testnet : this.config.environment === 'development';
         switch (protocol) {
             case Protocol.BITCOIN:
@@ -52,7 +55,7 @@ class Controller extends Interface {
             case Protocol.AVAXCCHAIN:
                 return await this.generateAvalancheWallet({ mnemonic, derivation, testnet });
             default:
-                throw new Error('Unsupported blockchain protocol');
+                throw new InvalidException('Unsupported blockchain protocol');
         }
     }
     /**
@@ -103,7 +106,7 @@ class Controller extends Interface {
                 walletData.address = getAvalancheAddressFromPrivateKey(privateKey);
                 break;
             default:
-                throw new Error('Unsupported blockchain protocol');
+                throw new InvalidException('Unsupported blockchain protocol');
         }
         return new Wallet(walletData);
     }
@@ -141,7 +144,7 @@ class Controller extends Interface {
                 walletAddress = deriveAvalancheAddressFromXpub(xpub, { address });
                 break;
             default:
-                throw new Error('Unsupported blockchain protocol');
+                throw new InvalidException('Unsupported blockchain protocol');
         }
         return walletAddress;
     }
