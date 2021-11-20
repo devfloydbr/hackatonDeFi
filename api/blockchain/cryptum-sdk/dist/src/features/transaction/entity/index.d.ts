@@ -338,7 +338,7 @@ export class SmartContractCallTransactionInput {
      *
      * @param {object} args
      * @param {string=} args.from
-     * @param {import('../../wallet/entity').Wallet=} args.wallet
+     * @param {import('../../wallet/entity').Wallet=} args.wallet wallet to transfer from
      * @param {string} args.contractAddress
      * @param {Array<object>} args.contractAbi
      * @param {string} args.method
@@ -347,7 +347,7 @@ export class SmartContractCallTransactionInput {
      */
     constructor({ from, contractAddress, contractAbi, method, params, protocol }: {
         from?: string | undefined;
-        wallet?: import('../../wallet/entity').Wallet | undefined;
+        wallet?: import("../../wallet/entity").Wallet;
         contractAddress: string;
         contractAbi: Array<object>;
         method: string;
@@ -355,7 +355,7 @@ export class SmartContractCallTransactionInput {
         protocol: string;
     });
     from?: string;
-    wallet?: import('../../wallet/entity').Wallet;
+    wallet?: import("../../wallet/entity").Wallet;
     contractAddress: string;
     contractAbi: any[];
     method: string;
