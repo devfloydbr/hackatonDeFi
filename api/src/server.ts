@@ -1,9 +1,9 @@
 import 'reflect-metadata'
-import 'dotenv/config';
-import express, { Request, Response, NextFunction } from 'express';
-import { createServer } from "http";
+import 'dotenv/config'
+import express from 'express'
+import { createServer } from 'http'
 
-import routes from './routes';
+import routes from './routes'
 
 const app = express();
 
