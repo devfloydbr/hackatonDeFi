@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cryptumSDK = void 0;
-const cryptum_sdk_1 = __importDefault(require("../../blockchain/cryptum-sdk"));
-exports.cryptumSDK = new cryptum_sdk_1.default({
+const dist_1 = __importDefault(require("../../blockchain/cryptum-sdk/dist"));
+exports.cryptumSDK = new dist_1.default({
     environment: 'development',
     apiKey: String(process.env.CRYPTUM_API_KEY),
 });
