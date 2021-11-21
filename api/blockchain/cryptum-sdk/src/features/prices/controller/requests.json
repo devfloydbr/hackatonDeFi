@@ -1,6 +1,0 @@
-{
-  "getPrices": {
-    "url": "/prices",
-    "method": "GET"
-  }
-}

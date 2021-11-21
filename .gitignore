@@ -1,17 +1,14 @@
-client/node_modules/
-client/.expo/
-client/dist/
-client/npm-debug.*
-client/*.jks
-client/*.p8
-client/*.p12
-client/*.key
-client/*.mobileprovision
-client/*.orig.*
-client/web-build/
+node_modules/
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
 
 # macOS
-client/.DS_Store
-
-api/node_modules/
-api/.env
+.DS_Store
