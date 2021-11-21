@@ -1,4 +1,4 @@
-import CryptumSDK from '../../blockchain/cryptum-sdk'
+import CryptumSDK from '../../blockchain/cryptum-sdk/dist'
 
 export const cryptumSDK = new CryptumSDK({
   environment: 'development',

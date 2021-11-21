@@ -3,7 +3,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "node server.js",
+    "start": "node dist/server.js",
     "deployToken": "ts-node-dev --transpile-only --ignore-watch node_modules src/deployToken.ts"
   },
   "dependencies": {
