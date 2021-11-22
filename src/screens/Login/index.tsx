@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { Button } from '../../components/Button'
 
@@ -24,7 +24,11 @@ interface Props {
 }
 
 export function Login({ navigation }: Props) { 
-  const { connect } = useAuth()
+  const { connect, signUp, wallet } = useAuth()
+
+  async function handleSignUp() {    
+    await signUp()  
+  }
 
   return (
     <View>
@@ -39,17 +43,13 @@ export function Login({ navigation }: Props) {
         >
           
           <LoginContainer>
-            <ButtonsContainer>
-              <Button 
-                title="Acessar minha conta"
-                onPress={connect}
-              />
-
-              <Button 
-                style={{ marginTop: 25 }}
-                title="Nova carteira"
-                onPress={() => navigation.navigate('NewWallet')}
-              />
+            <ButtonsContainer>  
+              {                
+                <Button                 
+                  title="Nova carteira"
+                  onPress={handleSignUp}
+                />
+              }
             </ButtonsContainer>
           </LoginContainer>
         </BackgroundLogin>

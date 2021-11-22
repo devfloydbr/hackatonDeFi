@@ -1,24 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
-import { Login } from '../screens/Login'
-import { NewWallet } from '../screens/NewWallet'
-
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-const { Navigator: NavigatorStack, Screen: ScreenStack } = createStackNavigator();
+import { NavigationContainer } from '@react-navigation/native';
+import { AppRoutes } from './app.routes';
+import { AuthRoutes } from './auth.routes';
+import { useAuth } from '../hooks/auth';
 
 export function Routes() {
+  const { wallet } = useAuth();
+
   return (
     <NavigationContainer>
-      <NavigatorStack
-        screenOptions={{
-          headerShown: false,
-          gestureEnabled: true,
-        }}
-      >
-        <ScreenStack name="Login" component={Login} />  
-        <ScreenStack name="NewWallet" component={NewWallet} />  
-      </NavigatorStack>
-    </NavigationContainer>    
+      { wallet.wallet ? <AppRoutes /> : <AuthRoutes /> }
+    </NavigationContainer>
   )
 }
